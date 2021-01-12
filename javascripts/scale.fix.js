@@ -31,12 +31,12 @@ const btn = document.querySelector(".btn-toggle-dark-mode");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-  switchToDarkMode();
-} else if (currentTheme == "light") {
+if (currentTheme == "light") {
   document.body.classList.toggle("light-theme");
   switchToLightMode();
+} else if (currentTheme == "dark" || prefersDarkScheme.matches) {
+  document.body.classList.toggle("dark-theme");
+  switchToDarkMode();
 }
 
 btn.addEventListener("click", function () {
