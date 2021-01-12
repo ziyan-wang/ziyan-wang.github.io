@@ -357,7 +357,6 @@ footer {
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 150px;
   background-color: dimgray;
   color: #fff;
   text-align: center;
@@ -367,8 +366,10 @@ footer {
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
-  top: -5px;
-  right: 155%;
+  width: 140px;
+  top: 20px;
+  left: 50%;
+  margin-left: -130px; /* Use half of the width (150/2 = 75), to center the tooltip */
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -376,22 +377,10 @@ footer {
   visibility: visible;
 }
 
-/* Tooltip Arrow */
-.tooltip .tooltiptext::after {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 100%; /* To the right of the tooltip */
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent dimgray;
-}
-
 /* Tooltip Fade in */
 .tooltip .tooltiptext {
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 0.25s;
 }
 .tooltip:hover .tooltiptext {
   opacity: 0.9;
@@ -421,8 +410,21 @@ body.dark-theme {
 
 .btn-toggle-dark-mode {
   float: right;
-  cursor: pointer;
   width: 24px;
+}
+
+.gg-moon {
+  cursor: pointer;
+}
+
+.gg-sun {
+  cursor: pointer;
+}
+
+.link-reset-dark-mode {
+  text-decoration: underline dotted;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 body {
@@ -442,10 +444,6 @@ body.dark-theme .tooltip .tooltiptext {
   background: #4a4a4a;
 }
 
-body.dark-theme .tooltip .tooltiptext::after {
-  border-color: transparent transparent transparent #4a4a4a;
-}
-
 body.dark-theme .gg-moon {
   display: none;
 }
@@ -462,10 +460,6 @@ body.dark-theme .gg-sun {
     color: var(--text-color);
     background: #4a4a4a;
   }
-  
-  body:not(.light-theme) .tooltip .tooltiptext::after {
-    border-color: transparent transparent transparent #4a4a4a;
-  }
 
   body:not(.light-theme) .gg-moon {
     display: none;
@@ -474,4 +468,3 @@ body.dark-theme .gg-sun {
     display: block;
   }
 }
-
