@@ -27,10 +27,12 @@ var currentTheme = localStorage.getItem("theme");
 if (prefersDarkScheme.matches) {
   if (currentTheme == "light") {
     document.body.classList.toggle("light-theme");
+    resetDarkModeButton.style.display = "inline";
   }
 } else {
   if (currentTheme == "dark") {
     document.body.classList.toggle("dark-theme");
+    resetDarkModeButton.style.display = "inline";
   }
 }
 
