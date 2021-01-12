@@ -422,7 +422,7 @@ body.dark-theme {
 }
 
 .link-reset-dark-mode {
-  text-decoration: underline dotted;
+  text-decoration: underline;
   font-size: 12px;
   cursor: pointer;
 }
