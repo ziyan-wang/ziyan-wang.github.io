@@ -15,3 +15,42 @@ function gestureStart() {
     }
   }
 }
+
+// Dark mode
+function switchToLightMode() {
+  document.querySelector(".gg-moon").style.display = "block";
+  document.querySelector(".gg-sun").style.display = "none";
+}
+
+function switchToDarkMode() {
+  document.querySelector(".gg-moon").style.display = "none";
+  document.querySelector(".gg-sun").style.display = "block";
+}
+
+const btn = document.querySelector(".btn-toggle-dark-mode");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme == "dark") {
+  document.body.classList.toggle("dark-theme");
+  switchToDarkMode();
+} else if (currentTheme == "light") {
+  document.body.classList.toggle("light-theme");
+  switchToLightMode();
+}
+
+btn.addEventListener("click", function () {
+  if (prefersDarkScheme.matches) {
+    document.body.classList.toggle("light-theme");
+    var theme = document.body.classList.contains("light-theme") ? "light" : "dark";
+  } else {
+    document.body.classList.toggle("dark-theme");
+    var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
+  }
+  if (theme === "dark") {
+    switchToDarkMode();
+  } else {
+    switchToLightMode();
+  }
+  localStorage.setItem("theme", theme);
+});
