@@ -446,3 +446,32 @@ body.dark-theme .tooltip .tooltiptext::after {
   border-color: transparent transparent transparent #4a4a4a;
 }
 
+body.dark-theme .gg-moon {
+  display: none;
+}
+body.dark-theme .gg-sun {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.light-theme) img {
+    filter: brightness(0.8) contrast(1.2);
+  }
+
+  body:not(.light-theme) .tooltip .tooltiptext {
+    color: var(--text-color);
+    background: #4a4a4a;
+  }
+  
+  body:not(.light-theme) .tooltip .tooltiptext::after {
+    border-color: transparent transparent transparent #4a4a4a;
+  }
+
+  body:not(.light-theme) .gg-moon {
+    display: none;
+  }
+  body:not(.light-theme) .gg-sun {
+    display: block;
+  }
+}
+
