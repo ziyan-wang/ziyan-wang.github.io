@@ -17,26 +17,18 @@ function gestureStart() {
 }
 
 // Dark mode
-function switchToLightMode() {
-  document.querySelector(".gg-moon").style.display = "block";
-  document.querySelector(".gg-sun").style.display = "none";
-}
-
-function switchToDarkMode() {
-  document.querySelector(".gg-moon").style.display = "none";
-  document.querySelector(".gg-sun").style.display = "block";
-}
-
 const btn = document.querySelector(".btn-toggle-dark-mode");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
-  switchToLightMode();
-} else if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-  switchToDarkMode();
+if (prefersDarkScheme.matches) {
+  if (currentTheme == "light") {
+    document.body.classList.toggle("light-theme");
+  }
+} else {
+  if (currentTheme == "dark") {
+    document.body.classList.toggle("dark-theme");
+  }
 }
 
 btn.addEventListener("click", function () {
@@ -46,11 +38,6 @@ btn.addEventListener("click", function () {
   } else {
     document.body.classList.toggle("dark-theme");
     var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
-  }
-  if (theme === "dark") {
-    switchToDarkMode();
-  } else {
-    switchToLightMode();
   }
   localStorage.setItem("theme", theme);
 });
