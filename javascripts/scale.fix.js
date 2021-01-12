@@ -44,6 +44,7 @@ toggleDarkModeButtons.forEach(function(button) {
       var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
     }
     localStorage.setItem("theme", theme);
+    resetDarkModeButton.style.display = "inline";
   });
 })
 
@@ -51,4 +52,5 @@ resetDarkModeButton.addEventListener("click", function () {
   localStorage.removeItem("theme");
   document.body.classList.remove("light-theme");
   document.body.classList.remove("dark-theme");
+  resetDarkModeButton.style.display = "none";
 });
