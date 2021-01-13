@@ -24,15 +24,16 @@ var resetDarkModeButton = document.querySelector(".link-reset-dark-mode");
 var prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 var currentTheme = localStorage.getItem("theme");
+if (currentTheme) {
+  document.body.classList.add("manual-theme");
+}
 if (prefersDarkScheme.matches) {
   if (currentTheme == "light") {
     document.body.classList.toggle("light-theme");
-    resetDarkModeButton.style.display = "inline";
   }
 } else {
   if (currentTheme == "dark") {
     document.body.classList.toggle("dark-theme");
-    resetDarkModeButton.style.display = "inline";
   }
 }
 
@@ -45,8 +46,8 @@ toggleDarkModeButtons.forEach(function(button) {
       document.body.classList.toggle("dark-theme");
       var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
     }
+    document.body.classList.add("manual-theme");
     localStorage.setItem("theme", theme);
-    resetDarkModeButton.style.display = "inline";
   });
 })
 
@@ -54,5 +55,5 @@ resetDarkModeButton.addEventListener("click", function () {
   localStorage.removeItem("theme");
   document.body.classList.remove("light-theme");
   document.body.classList.remove("dark-theme");
-  resetDarkModeButton.style.display = "none";
+  document.body.classList.remove("manual-theme");
 });
