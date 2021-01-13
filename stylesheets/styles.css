@@ -425,7 +425,6 @@ body.dark-theme {
   text-decoration: underline;
   font-size: 12px;
   cursor: pointer;
-  display: none;
 }
 
 body {
@@ -436,36 +435,107 @@ h1, p, li, strong, code {
   color: var(--text-color);
 }
 
-body.dark-theme img {
-  filter: brightness(0.8) contrast(1.2);
+/* dark mode reset button */
+body .link-reset-dark-mode {
+  display: none;
 }
 
-body.dark-theme .tooltip .tooltiptext {
+body.manual-theme .link-reset-dark-mode {
+  display: inline;
+}
+
+/*
+<body>'s classes          |  prefers-color-scheme:screen-showing-color:control-mode
+--------------------------|---------------------------------------------------------
+(no class)                |  prefer-light:light:auto, prefer-dark:dark:auto
+manual-theme              |  prefer-light:light:manual, prefer-dark:dark:manual
+manual-theme light-theme  |  prefer-dark:light:manual
+manual-theme dark-theme   |  prefer-light:dark:manual
+*/
+
+/* user's prefers-color-scheme: light */
+body.manual-theme.dark-theme img {
+  filter: brightness(0.8) contrast(1.2);
+}
+body.manual-theme.dark-theme .tooltip .tooltiptext {
   color: var(--text-color);
   background: #4a4a4a;
 }
-
-body.dark-theme .gg-moon {
+body.manual-theme.dark-theme .gg-moon {
   display: none;
 }
-body.dark-theme .gg-sun {
+body.manual-theme.dark-theme .gg-sun {
   display: block;
 }
+body .indicator-dark-mode-auto {
+  display: inline;
+}
+body .indicator-dark-mode-on {
+  display: none;
+}
+body .indicator-dark-mode-off {
+  display: none;
+}
+body.manual-theme .indicator-dark-mode-auto {
+  display: none;
+}
+body.manual-theme .indicator-dark-mode-on {
+  display: none;
+}
+body.manual-theme .indicator-dark-mode-off {
+  display: inline;
+}
+body.manual-theme.dark-theme .indicator-dark-mode-auto {
+  display: none;
+}
+body.manual-theme.dark-theme .indicator-dark-mode-on {
+  display: inline;
+}
+body.manual-theme.dark-theme .indicator-dark-mode-off {
+  display: none;
+}
 
+/* user's prefers-color-scheme: dark */
 @media (prefers-color-scheme: dark) {
   body:not(.light-theme) img {
     filter: brightness(0.8) contrast(1.2);
   }
-
   body:not(.light-theme) .tooltip .tooltiptext {
     color: var(--text-color);
     background: #4a4a4a;
   }
-
   body:not(.light-theme) .gg-moon {
     display: none;
   }
   body:not(.light-theme) .gg-sun {
     display: block;
   }
+  body .indicator-dark-mode-auto {
+    display: inline;
+  }
+  body .indicator-dark-mode-on {
+    display: none;
+  }
+  body .indicator-dark-mode-off {
+    display: none;
+  }
+  body.manual-theme .indicator-dark-mode-auto {
+    display: none;
+  }
+  body.manual-theme .indicator-dark-mode-on {
+    display: inline;
+  }
+  body.manual-theme .indicator-dark-mode-off {
+    display: none;
+  }
+  body.manual-theme.light-theme .indicator-dark-mode-auto {
+    display: none;
+  }
+  body.manual-theme.light-theme .indicator-dark-mode-on {
+    display: none;
+  }
+  body.manual-theme.light-theme .indicator-dark-mode-off {
+    display: inline;
+  }
 }
+
