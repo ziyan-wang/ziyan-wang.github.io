@@ -35,12 +35,16 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#39c;
+  color:#2a7ea7;
   text-decoration:none;
 }
 
+a:not(.unimportant-link)::after {
+  content: " \2197";
+}
+
 a:hover {
-  color:#069;
+  color:#00476b;
 }
 
 a small {
@@ -454,6 +458,12 @@ manual-theme dark-theme   |  prefer-light:dark:manual
 */
 
 /* user's prefers-color-scheme: light */
+body.manual-theme.dark-theme a {
+  color: #38a9e0;
+}
+body.manual-theme.dark-theme a:hover {
+  color: #3fc0ff;
+}
 body.manual-theme.dark-theme img {
   filter: brightness(0.8) contrast(1.2);
 }
@@ -497,6 +507,12 @@ body.manual-theme.dark-theme .indicator-dark-mode-off {
 
 /* user's prefers-color-scheme: dark */
 @media (prefers-color-scheme: dark) {
+  body:not(.light-theme) a {
+    color: #38a9e0;
+  }
+  body:not(.light-theme) a:hover {
+    color: #3fc0ff;
+  }
   body:not(.light-theme) img {
     filter: brightness(0.8) contrast(1.2);
   }
@@ -539,3 +555,9 @@ body.manual-theme.dark-theme .indicator-dark-mode-off {
   }
 }
 
+/* printing */
+@media print {
+  .noprint {
+    visibility: hidden;
+  }
+}
