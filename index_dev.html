@@ -1,9 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Ziyan Wang</title>
+    <meta name="description" content="Ziyan Wang's introduction, including his photo, contact information,
+    biography, research interests, education history, work experience, awards & honors, personal interests,
+    languages, and publications.">
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -27,7 +30,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="tooltip btn-toggle-dark-mode">
+      <div class="tooltip btn-toggle-dark-mode noprint">
         <i class="gg-moon"></i>
         <i class="gg-sun"></i>
         <span class="tooltiptext">
@@ -41,7 +44,8 @@
       </div>
       <header>
         <h1>Ziyan Wang&nbsp;&nbsp;<span style="font-size: large">王子彦</span></h1>
-        <p><img src="images/logo.jpg" width="220" height="165" alt="Photo of Ziyan"/></p>
+        <p><img src="images/logo_large.jpg" srcset="images/logo_small.jpg 220w, images/logo_medium.jpg 440w, 
+          images/logo_large.jpg 660w" sizes="220px" width="220" height="165" alt="Photo of Ziyan"/></p>
         <p>
           M.S. student<br>
           <a href="http://inpluslab.com">InplusLab</a><br>
@@ -69,29 +73,35 @@
 
         <h1>Research Interests</h1>
         <ul>
-          <li>Programming Languages</li>
-          <ul>
-            <li>Static Analysis</li>
-            <li>Program Verification</li>
-            <li>Compiler Optimization</li>
-            <li>Runtime Environment</li>
-            <li>Language Design</li>
-          </ul>
+          <li>
+            <span>Programming Languages</span>
+            <ul>
+              <li>Static Analysis</li>
+              <li>Program Verification</li>
+              <li>Compiler Optimization</li>
+              <li>Runtime Environment</li>
+              <li>Language Design</li>
+            </ul>
+          </li>
           <li>Software Engineering</li>
         </ul>
 
         <h1>Education</h1>
         <ul>
-          <li>Sun Yat-Sen University, China, 2020 &ndash; today</li>
-          <ul>
-            <li>M.S. in Electronics and Information Technology</li>
-            <li>Advisors: Xiangping Chen and <a href="http://sdcs.sysu.edu.cn/content/2491">Xiaocong Zhou</a></li>
-          </ul>
-          <li>South China Normal University, China, 2014 &ndash; 2019</li>
-          <ul>
-            <li>B.S. in Computer Science and Technology <i>(graduated with honors)</i></li>
-            <li>Advisor: <a href="https://www.scholat.com/javaelf">Jia Zhu</a></li>
-          </ul>
+          <li>
+            <span>Sun Yat-Sen University, China, 2020 &ndash; today</span>
+            <ul>
+              <li>M.S. in Electronics and Information Technology</li>
+              <li>Advisors: Xiangping Chen and <a href="http://sdcs.sysu.edu.cn/content/2491">Xiaocong Zhou</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>South China Normal University, China, 2014 &ndash; 2019</span>
+            <ul>
+              <li>B.S. in Computer Science and Technology <i>(graduated with honors)</i></li>
+              <li>Advisor: <a href="https://www.scholat.com/javaelf">Jia Zhu</a></li>
+            </ul>
+          </li>
         </ul>
 
         <h1>Experience</h1>
@@ -128,7 +138,8 @@
 
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages · Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on GitHub Pages · Theme by
+          <a href="https://github.com/orderedlist" class="unimportant-link">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
