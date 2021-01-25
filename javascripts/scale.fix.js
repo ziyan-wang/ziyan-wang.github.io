@@ -57,3 +57,11 @@ resetDarkModeButton.addEventListener("click", function () {
   document.body.classList.remove("dark-theme");
   document.body.classList.remove("manual-theme");
 });
+
+// Read more for biography
+var readMoreButton = document.querySelector(".btn-read-more-biography");
+var biographyParagraph = document.querySelector(".biography");
+readMoreButton.addEventListener("click", function () {
+  biographyParagraph.classList.remove("text-fade-out");
+  readMoreButton.style.display = "none";
+});
