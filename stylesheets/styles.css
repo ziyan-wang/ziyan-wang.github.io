@@ -448,6 +448,28 @@ body.manual-theme .link-reset-dark-mode {
   display: inline;
 }
 
+/* Read more for biography */
+.text-fade-out {
+  max-height: 125px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.p-read-more-biography {
+  margin-top: 10px;
+}
+
+.btn-read-more-biography {
+  color: #2a7ea7;
+  cursor: pointer;
+}
+
+.btn-read-more-biography:hover {
+  color: #00476b;
+}
+
+
 /*
 <body>'s classes          |  prefers-color-scheme:screen-showing-color:control-mode
 --------------------------|---------------------------------------------------------
@@ -504,6 +526,12 @@ body.manual-theme.dark-theme .indicator-dark-mode-on {
 body.manual-theme.dark-theme .indicator-dark-mode-off {
   display: none;
 }
+body.manual-theme.dark-theme .btn-read-more-biography {
+  color: #38a9e0;
+}
+body.manual-theme.dark-theme .btn-read-more-biography:hover {
+  color: #3fc0ff;
+}
 
 /* user's prefers-color-scheme: dark */
 @media (prefers-color-scheme: dark) {
@@ -553,11 +581,26 @@ body.manual-theme.dark-theme .indicator-dark-mode-off {
   body.manual-theme.light-theme .indicator-dark-mode-off {
     display: inline;
   }
+  body:not(.light-theme) .btn-read-more-biography {
+    color: #38a9e0;
+  }
+  body:not(.light-theme) .btn-read-more-biography:hover {
+    color: #3fc0ff;
+  }
 }
 
 /* printing */
 @media print {
   .noprint {
     visibility: hidden;
+  }
+  .text-fade-out {
+    max-height: none;
+    overflow: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .btn-read-more-biography {
+    display: none;
   }
 }
