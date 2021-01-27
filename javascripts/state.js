@@ -91,12 +91,15 @@
       if (language === "english") {
         biography.innerHTML = multilanguageMap.biography.english;
         biography.lang = "en";
+        biography.classList.remove("strong-as-bold");
       } else if (language === "chinese") {
         biography.innerHTML = multilanguageMap.biography.chinese;
-        biography.lang = "zh-Hans";
+        biography.lang = "zh";
+        biography.classList.add("strong-as-bold");
       } else if (language === "esperanto") {
         biography.innerHTML = multilanguageMap.biography.esperanto;
         biography.lang = "eo";
+        biography.classList.remove("strong-as-bold");
       } else {
         throw new Error("Unrecognized language: " + language);
       }
