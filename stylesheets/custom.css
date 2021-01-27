@@ -1,3 +1,8 @@
+/* for Chinese texts, "font-weight: 500" does not render correctly */
+strong {
+  font-weight: 600;
+}
+
 .display-none {
   display: none;
 }
