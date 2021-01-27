@@ -62,7 +62,7 @@
       <section>
         <h1>Short Biography</h1>
         <div class="biography-wrapper">
-          <div class="biography text-fade-out">
+          <div id="biography" class="biography text-fade-out">
             <p>Ziyan is a full stack developer and a researcher.</p>
             <p>
               <strong>Ziyan devotes himself to making programming languages and tools better.</strong> 
@@ -87,7 +87,15 @@
               as practical ways to improve code written in existing flawed languages.
             </p>
           </div>
-          <p class="p-read-more-biography"><button class="link noprint btn-read-more-biography">Read more &#9660;</button></p>
+          <p class="p-read-more-biography">
+            <button class="link noprint btn-read-more-biography">Read more &#9660;</button>
+            <button class="link noprint btn-switch-language">Language / 语言</button>
+            <select id="language-select" name="languages" class="noprint display-none">
+              <option value="english" selected>English</option>
+              <option value="esperanto">Esperanto</option>
+              <option value="chinese">简体中文</option>
+            </select>
+          </p>
         </div>
 
         <h1>Research Interests</h1>
