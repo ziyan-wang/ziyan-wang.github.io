@@ -1,6 +1,5 @@
-/* for Chinese texts, "font-weight: 500" does not render correctly */
-strong {
-  font-weight: 600;
+.strong-as-bold strong {
+  font-weight: bold;
 }
 
 .display-none {
