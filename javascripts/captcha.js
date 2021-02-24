@@ -81,7 +81,8 @@
           document.getElementById('captchaWrapper').style.display = 'none';
           document.getElementById('wrongInputSign').style.display = 'none';
           document.getElementById('rightInputSign').style.display = 'inline-block';
-          window.location.href = decrypt(projectUrls[projectId - 1]);
+          var targetUrl = decrypt(projectUrls[projectId - 1]);
+          window.location.replace(targetUrl);
           return true;
         } else {
           document.getElementById('wrongInputSign').style.display = 'inline-block';
