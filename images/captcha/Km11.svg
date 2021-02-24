@@ -1,0 +1,9 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="150"
+        viewBox="50 25 100 150"
+        preserveAspectRatio="xMidYMid meet"
+>
+    <polyline points="130,100 70,100 70,50 130,50 130,150 70,150" fill="none" stroke="black" stroke-width="8" />
+</svg>
