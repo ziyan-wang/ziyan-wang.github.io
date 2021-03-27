@@ -33,7 +33,10 @@
   <body>
     <div class="wrapper">
       <div class="settings noprint">
-        <a href="index_cn.html" target="_self" title="Switch to Chinese version" class="link-switch-language unimportant-link">
+        <a id="link-switch-language" href="index_cn.html" target="_self"
+           title="Switch to Chinese version" class="link-switch-language unimportant-link"
+           onclick="document.getElementById('link-switch-language').innerHTML += '&#8987;'"
+        >
           中文
         </a>
 
@@ -150,11 +153,13 @@
           <li>2020: Software Engineer. Beijing Kungeek Technology Co., Ltd.</li>
         </ul>
         
-        <h1>Awards and Honors</h1>
+        <h1>Major Awards and Honors</h1>
         <ul>
-          <li>Outstanding Graduate Award, South China Normal University, 2019</li>
-          <li>Outstanding Student Scholarship, South China Normal University, 2017 & 2018</li>
-          <li>Grand Prize for Asia and Pacific Mathematical Contest in Modeling, 2018</li>
+          <li>Outstanding Graduate Award (<2% selected), South China Normal University, 2019</li>
+          <li>Outstanding Student Scholarship for two consecutive years (1.4%), South China Normal University, 2017 & 2018</li>
+          <li>Grand Prize for Asia and Pacific Mathematical Contest in Modeling (0.1%), 2018</li>
+          <li>First Prize for Lan-Qiao Software And IT Talents Contest (0.3%), 2018</li>
+          <li>First Prize for Kai-Tong Java Programming Contest (0.1%), 2017</li>
         </ul>
 
         <h1>Open-Source Projects</h1>
@@ -177,6 +182,9 @@
           <li>Strategy games (chess, tower defense)</li>
           <li>Light music</li>
         </ul>
+
+        <h1>Programming Languages</h1>
+        <p>Java/C#, TypeScript/JS, Python, Scala, Kotlin, Go, C/C++, Haskell, ...</p>
 
         <h1>Languages</h1>
         <p>Chinese, English, Esperanto, German (basic knowledge)</p>
