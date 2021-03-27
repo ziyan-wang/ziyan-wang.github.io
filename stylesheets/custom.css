@@ -157,8 +157,55 @@ body.dark-theme {
   }
 }
 
+.settings {
+  position: absolute;
+  display: flex;
+  right: 20%;
+  text-align: right;
+  margin-top: 5px;
+}
+
+@media print, screen and (max-width: 1440px) {
+  .settings {
+    right: 15%;
+  }
+}
+
+@media print, screen and (max-width: 1250px) {
+  .settings {
+    right: 10%;
+  }
+}
+
+@media print, screen and (max-width: 1100px) {
+  .settings {
+    right: 7.5%;
+  }
+}
+
+@media print, screen and (max-width: 1000px) {
+  .settings {
+    right: 5%;
+  }
+}
+
+@media print, screen and (max-width: 960px) {
+  .settings {
+    right: 58px;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  .settings {
+    right: 23px;
+  }
+}
+
+.link-switch-language {
+  margin-right: 15px;
+}
+
 .btn-toggle-dark-mode {
-  float: right;
   width: 24px;
 }
 

@@ -32,20 +32,26 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="tooltip btn-toggle-dark-mode noprint">
-        <i class="gg-moon"></i>
-        <i class="gg-sun"></i>
-        <span class="tooltiptext">
-          Dark Mode:
-          <span class="indicator-dark-mode-auto">Auto</span>
-          <span class="indicator-dark-mode-on">On</span>
-          <span class="indicator-dark-mode-off">Off</span>
-          <br>
+      <div class="settings noprint">
+        <a href="index_cn.html" target="_self" title="Switch to Chinese version" class="link-switch-language unimportant-link">
+          中文
+        </a>
+
+        <div class="tooltip btn-toggle-dark-mode noprint">
+          <i class="gg-moon"></i>
+          <i class="gg-sun"></i>
+          <span class="tooltiptext">
+            Dark Mode:
+            <span class="indicator-dark-mode-auto">Auto</span>
+            <span class="indicator-dark-mode-on">On</span>
+            <span class="indicator-dark-mode-off">Off</span>
+            <br>
           <span class="link-reset-dark-mode">Reset To Auto</span>
         </span>
+        </div>
       </div>
       <header>
-        <h1>Ziyan Wang&nbsp;&nbsp;<span style="font-size: large">王子彦</span></h1>
+        <h1>Ziyan Wang</h1>
         <p><img src="images/logo_large.jpg" srcset="images/logo_small.jpg 220w, images/logo_medium.jpg 440w, 
           images/logo_large.jpg 660w" sizes="220px" width="220" height="165" alt="Photo of Ziyan"/></p>
         <p>
@@ -80,7 +86,7 @@
               <a href="https://en.wikipedia.org/wiki/Programming_paradigm">programming paradigms</a>.
             </p>
             <p>
-              <strong>Why?</strong> One of the reasons: it's Ziyan's observation that a large proportion of software 
+              <strong>Why?</strong> One of the reasons: it is Ziyan's observation that a large proportion of software
               defects, i.e. bugs and vulnerabilities, though seemingly nothing more than run-of-the-mill errors in 
               code, can be ultimately traced back to the underlying design flaws of languages. He believes that a 
               well-designed language eliminates such defects at the very root, far before developers start coding.
@@ -96,12 +102,6 @@
           </div>
           <p class="p-read-more-biography">
             <button class="link noprint btn-read-more-biography">Read more &#9660;</button>
-            <button class="link noprint btn-switch-language">Language / 语言</button>
-            <select id="language-select" name="languages" class="noprint display-none">
-              <option value="english" selected>English</option>
-              <option value="esperanto">Esperanto</option>
-              <option value="chinese">简体中文</option>
-            </select>
           </p>
         </div>
 
@@ -110,15 +110,18 @@
           <li>
             <span>Programming Languages</span>
             <ul>
-              <li>Static Analysis</li>
-              <li>Program Verification</li>
+              <li>Static Program Analysis</li>
               <li>Compiler Optimization</li>
               <li>Runtime Environment</li>
               <li>Language Design</li>
             </ul>
           </li>
-          <li>Software Engineering</li>
-          <li>Smart Contract (Blockchain)</li>
+          <li>
+            <span>Software Engineering</span>
+            <ul>
+              <li>Smart Contracts (Blockchain)</li>
+            </ul>
+          </li>
         </ul>
 
         <h1>Education</h1>
@@ -141,7 +144,8 @@
 
         <h1>Experience</h1>
         <ul>
-          <li>2021: Teaching Assistant. Principles of Compiler Design, instructed by 
+          <li>2021: Teaching Assistant. <a href="https://xianweiz.github.io/teach/dcs290/s2021.html">
+            Principles of Compiler Design</a>, instructed by
             <a href="https://xianweiz.github.io">Xianwei Zhang</a> at Sun Yat-Sen University</li>
           <li>2020: Software Engineer. Beijing Kungeek Technology Co., Ltd.</li>
         </ul>
@@ -153,7 +157,7 @@
           <li>Grand Prize for Asia and Pacific Mathematical Contest in Modeling, 2018</li>
         </ul>
 
-        <h1>Projects</h1>
+        <h1>Open-Source Projects</h1>
         <p>
           <a href="projects/captcha.html?projectId=1" class="unimportant-link">
             <img src="images/project_1.svg" width="200" height="91" loading="lazy" alt="Project 1" class="transparent-dark-image"/>
