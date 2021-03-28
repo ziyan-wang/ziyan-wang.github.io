@@ -130,12 +130,14 @@ a:not(.unimportant-link)::after {
 /* Dark mode */
 body {
   --text-color: #222;
+  --weak-text-color: #595959;
   --bkg-color: #fff;
   --link-color: #2a7ea7;
   --link-hover-color: #00476b;
 }
 body.dark-theme {
   --text-color: #eee;
+  --weak-text-color: #b3b3b3;
   --bkg-color: #121212;
   --link-color: #38a9e0;
   --link-hover-color: #3fc0ff;
@@ -145,12 +147,14 @@ body.dark-theme {
   /* defaults to dark theme */
   body {
     --text-color: #eee;
+    --weak-text-color: #b3b3b3;
     --bkg-color: #121212;
     --link-color: #38a9e0;
     --link-hover-color: #3fc0ff;
   }
   body.light-theme {
     --text-color: #222;
+    --weak-text-color: #595959;
     --bkg-color: #fff;
     --link-color: #2a7ea7;
     --link-hover-color: #00476b;
@@ -232,12 +236,38 @@ h1, p, li, strong, code {
   color: var(--text-color);
 }
 
+blockquote {
+  color: var(--weak-text-color);
+}
+
 a, button.link {
   color: var(--link-color);
 }
 
 a:hover, a:focus, button.link:hover, button.link:focus {
   color: var(--link-hover-color);
+}
+
+/* blockquote big quote mark effects */
+blockquote {
+  border-left: unset;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  margin: 0.25em 0;
+  padding: 0.35em 0 0.35em 30px;
+  line-height: 1.45;
+  position: relative;
+}
+
+blockquote:before {
+  display: block;
+  padding-left: 10px;
+  content: "\201C";
+  font-size: 60px;
+  position: absolute;
+  left: -15px;
+  top: -10px;
 }
 
 /* dark mode reset button */
