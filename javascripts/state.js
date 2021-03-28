@@ -43,12 +43,13 @@
     // listen to toggleDarkModeButton
     toggleDarkModeButtons.forEach(function(button) {
       button.addEventListener("click", function () {
+        var theme;
         if (prefersDarkScheme.matches) {
           document.body.classList.toggle("light-theme");
-          var theme = document.body.classList.contains("light-theme") ? "light" : "dark";
+          theme = document.body.classList.contains("light-theme") ? "light" : "dark";
         } else {
           document.body.classList.toggle("dark-theme");
-          var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
+          theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
         }
         document.body.classList.add("manual-theme");
         localStorage.setItem("theme", theme);
@@ -132,15 +133,33 @@
     // switch language at page load according to localStorage
     var languageState = localStorage.getItem("language");
     if (languageState !== null) {
-      if (!isValidTargetLanguage(languageState)) {
-        // unsupported legacy languageState, reset to English
-        localStorage.setItem("language", "english");
-        languageState = "english";
-      }
       switchLanguageAndRedirect(htmlLanguage, languageState);
     }
   }
 
+  function upgradeLocalStorageDataVersion() {
+    // data versions for localStorage data
+    // v1: theme["dark", "light"], biographyFold["unfolded", "folded"]
+    // v2: theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese", "esperanto"]
+    // v3: dataVersion["3"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"]
+
+    // note: Before v3, version flags (v1 and v2) are not recorded in localStorage
+
+    var versionState = localStorage.getItem("dataVersion");
+    if (versionState === null) {
+      // set version flag during the first page load
+      localStorage.setItem("dataVersion", "3");
+
+      // upgrade from v2 to v3
+      // unsupported legacy Esperanto language, reset to English
+      if (localStorage.getItem("language") === "esperanto") {
+        console.log("Local data upgraded: supports for Esperanto have been removed, resetting language");
+        localStorage.removeItem("language");
+      }
+    }
+  }
+
+  upgradeLocalStorageDataVersion();
   initializeDarkMode();
   initializeBiographyReadMore();
   initializeLanguages();
