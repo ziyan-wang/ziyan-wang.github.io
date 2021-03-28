@@ -202,6 +202,7 @@ body.dark-theme {
 }
 
 .link-switch-language {
+  cursor: pointer;
   margin-right: 15px;
 }
 

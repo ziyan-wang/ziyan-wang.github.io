@@ -1,4 +1,22 @@
 (function () {
+  function assert(predicate, errorMessage) {
+    if (!predicate) {
+      throw new Error(errorMessage);
+    }
+  }
+
+  function isValidHtmlLanguage(htmlLanguage) {
+    return htmlLanguage === "en" || htmlLanguage === "zh";
+  }
+
+  function isValidTargetLanguage(targetLanguage) {
+    return targetLanguage === "english" || targetLanguage === "chinese";
+  }
+
+  function getOpposingTargetLanguageFromHtmlLanguage(htmlLanguage) {
+    assert(isValidHtmlLanguage(htmlLanguage), "Unrecognized htmlLanguage: " + htmlLanguage);
+    return htmlLanguage === "en" ? "chinese" : "english";
+  }
 
   function initializeDarkMode() {
     var toggleDarkModeButtons = [".gg-moon", ".gg-sun"].map(function(className) { 
@@ -50,7 +68,7 @@
     var readMoreButton = document.querySelector(".btn-read-more-biography");
     var biographyParagraph = document.querySelector(".biography");
     var htmlLanguage = document.documentElement.lang;
-    if (htmlLanguage !== "en" && htmlLanguage !== "zh") {
+    if (!isValidHtmlLanguage(htmlLanguage)) {
       console.error("Unsupported html.lang, defaulting to English");
       htmlLanguage = "en";
     }
@@ -90,12 +108,41 @@
     });
   }
 
-  function removeLegacyLocalStorageItems() {
-    localStorage.removeItem("language");
+  function initializeLanguages() {
+    function switchLanguageAndRedirect(htmlLanguage, targetLanguage) {
+      assert(isValidHtmlLanguage(htmlLanguage), "Unrecognized htmlLanguage: " + htmlLanguage);
+      assert(isValidTargetLanguage(targetLanguage), "Unrecognized targetLanguage: " + targetLanguage);
+      if (targetLanguage === "english" && htmlLanguage !== "en") {
+        localStorage.setItem("language", "english");
+        window.location.replace('index.html');
+      } else if (targetLanguage === "chinese" && htmlLanguage !== 'zh') {
+        localStorage.setItem("language", "chinese");
+        window.location.replace('index_cn.html');
+      }
+    }
+
+    // listen to switch language link
+    var switchLanguageLink = document.getElementById("link-switch-language");
+    var htmlLanguage = document.documentElement.lang;
+    switchLanguageLink.addEventListener("click", function() {
+      document.getElementById('link-switch-language').innerHTML += "&#8987;";  // add hourglass loading icon
+      switchLanguageAndRedirect(htmlLanguage, getOpposingTargetLanguageFromHtmlLanguage(htmlLanguage));
+    });
+
+    // switch language at page load according to localStorage
+    var languageState = localStorage.getItem("language");
+    if (languageState !== null) {
+      if (!isValidTargetLanguage(languageState)) {
+        // unsupported legacy languageState, reset to English
+        localStorage.setItem("language", "english");
+        languageState = "english";
+      }
+      switchLanguageAndRedirect(htmlLanguage, languageState);
+    }
   }
 
-  removeLegacyLocalStorageItems();
   initializeDarkMode();
   initializeBiographyReadMore();
+  initializeLanguages();
 
 })();
