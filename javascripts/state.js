@@ -1,3 +1,4 @@
+"use strict";
 (function () {
   function assert(predicate, errorMessage) {
     if (!predicate) {
@@ -129,12 +130,6 @@
       document.getElementById('link-switch-language').innerHTML += "&#8987;";  // add hourglass loading icon
       switchLanguageAndRedirect(htmlLanguage, getOpposingTargetLanguageFromHtmlLanguage(htmlLanguage));
     });
-
-    // switch language at page load according to localStorage
-    var languageState = localStorage.getItem("language");
-    if (languageState !== null) {
-      switchLanguageAndRedirect(htmlLanguage, languageState);
-    }
   }
 
   function upgradeLocalStorageDataVersion() {
