@@ -131,16 +131,18 @@ a:not(.unimportant-link)::after {
 body {
   --text-color: #222;
   --weak-text-color: #595959;
-  --bkg-color: #fff;
   --link-color: #2a7ea7;
   --link-hover-color: #00476b;
+  --table-border-color: #e5e5e5;
+  --bkg-color: #fff;
 }
 body.dark-theme {
   --text-color: #eee;
   --weak-text-color: #b3b3b3;
-  --bkg-color: #121212;
   --link-color: #38a9e0;
   --link-hover-color: #3fc0ff;
+  --table-border-color: #727272;
+  --bkg-color: #121212;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -148,16 +150,18 @@ body.dark-theme {
   body {
     --text-color: #eee;
     --weak-text-color: #b3b3b3;
-    --bkg-color: #121212;
     --link-color: #38a9e0;
     --link-hover-color: #3fc0ff;
+    --table-border-color: #727272;
+    --bkg-color: #121212;
   }
   body.light-theme {
     --text-color: #222;
     --weak-text-color: #595959;
-    --bkg-color: #fff;
     --link-color: #2a7ea7;
     --link-hover-color: #00476b;
+    --table-border-color: #e5e5e5;
+    --bkg-color: #fff;
   }
 }
 
@@ -236,7 +240,7 @@ h1, p, li, strong, code {
   color: var(--text-color);
 }
 
-blockquote {
+blockquote, table {
   color: var(--weak-text-color);
 }
 
@@ -246,6 +250,29 @@ a, button.link {
 
 a:hover, a:focus, button.link:hover, button.link:focus {
   color: var(--link-hover-color);
+}
+
+/* reference list table */
+table.reference-list-table {
+  font-size: small;
+}
+
+table.reference-list-table tr:first-child td {
+  font-variant: small-caps;
+}
+
+table.reference-list-table td {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: var(--table-border-color);
+}
+
+table.reference-list-table td:first-child {
+  padding-left: 5px;
+}
+
+table.reference-list-table td:last-child {
+  width: 100%;
 }
 
 /* blockquote big quote mark effects */
