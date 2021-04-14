@@ -180,16 +180,32 @@
     // listen to toggle-accessibility-mode button
     var toggleAccessibilityModeButton = document.getElementById("toggle-accessibility-mode");
     var accessibilityModeClass = "accessibility-mode";
+    var accessibilityModeKey = "accessibilityMode";
     var checkSign = " &check;";
-    toggleAccessibilityModeButton.addEventListener("click", function() {
-      document.body.classList.toggle(accessibilityModeClass);
-      if (document.body.classList.contains(accessibilityModeClass)) {
+    var toggleAccessibilityMode = function(isPageLoad) {
+      if (isPageLoad === true) {
+        document.body.classList.add(accessibilityModeClass);
         toggleAccessibilityModeButton.innerHTML += checkSign;
       } else {
-        toggleAccessibilityModeButton.innerHTML =
-          toggleAccessibilityModeButton.innerHTML.substring(0, toggleAccessibilityModeButton.innerHTML.length - 2);
+        document.body.classList.toggle(accessibilityModeClass);
+        if (document.body.classList.contains(accessibilityModeClass)) {
+          toggleAccessibilityModeButton.innerHTML += checkSign;
+          localStorage.setItem(accessibilityModeKey, "true");
+        } else {
+          toggleAccessibilityModeButton.innerHTML =
+            toggleAccessibilityModeButton.innerHTML.substring(0, toggleAccessibilityModeButton.innerHTML.length - 2);
+          localStorage.removeItem(accessibilityModeKey);
+        }
       }
-    })
+    }
+    toggleAccessibilityModeButton.addEventListener("click", function() {
+      toggleAccessibilityMode(false);
+    });
+
+    // decide whether to use accessibility mode by localStorage
+    if (localStorage.getItem(accessibilityModeKey) === "true") {
+      toggleAccessibilityMode(true);
+    }
   }
 
   function upgradeLocalStorageDataVersion() {
@@ -198,24 +214,25 @@
     // v2: theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese", "esperanto"]
     // v3: dataVersion["3"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"]
     // v4: dataVersion["4"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"]
+    // v5: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"]
 
     // note: Before v3, version flags (v1 and v2) are not recorded in localStorage
 
     var versionState = localStorage.getItem("dataVersion");
     if (versionState === null) {
       // set version flag during the first page load
-      localStorage.setItem("dataVersion", "4");
+      localStorage.setItem("dataVersion", "5");
 
-      // upgrade from v2 to v4
+      // upgrade from v2 to v5
       // unsupported legacy Esperanto language, reset to English
       if (localStorage.getItem("language") === "esperanto") {
         console.log("Local data upgraded: supports for Esperanto have been removed, resetting language");
         localStorage.removeItem("language");
       }
-    } else if (versionState === "3") {
+    } else if (versionState === "3" || versionState === "4") {
       // set version flag during the first page load
-      // upgrade from v3 to v4, no action is needed
-      localStorage.setItem("dataVersion", "4");
+      // upgrade from v3/v4 to v5, no action is needed
+      localStorage.setItem("dataVersion", "5");
     }
   }
 
@@ -223,7 +240,7 @@
   initializeDarkMode();
   initializeHeaderLogo();
   initializeBiographyReadMore();
-  initializeLanguages();
   initializeAccessibilityMode();
+  initializeLanguages();
 
 })();
