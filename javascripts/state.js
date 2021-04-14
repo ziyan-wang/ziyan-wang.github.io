@@ -20,9 +20,6 @@
   }
 
   function initializeDarkMode() {
-    var toggleDarkModeButtons = [".gg-moon", ".gg-sun"].map(function(className) { 
-      return document.querySelector(className);
-    });
     var resetDarkModeButton = document.querySelector(".link-reset-dark-mode");
     var prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
   
@@ -42,20 +39,26 @@
     }
 
     // listen to toggleDarkModeButton
-    toggleDarkModeButtons.forEach(function(button) {
-      button.addEventListener("click", function () {
-        var theme;
-        if (prefersDarkScheme.matches) {
-          document.body.classList.toggle("light-theme");
-          theme = document.body.classList.contains("light-theme") ? "light" : "dark";
-        } else {
-          document.body.classList.toggle("dark-theme");
-          theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
-        }
-        document.body.classList.add("manual-theme");
-        localStorage.setItem("theme", theme);
-      });
-    })
+    var toggleDarkModeButton = document.getElementById("btn-toggle-dark-mode");
+    var toggleDarkModeButtonClickListener = function() {
+      var theme;
+      if (prefersDarkScheme.matches) {
+        document.body.classList.toggle("light-theme");
+        theme = document.body.classList.contains("light-theme") ? "light" : "dark";
+      } else {
+        document.body.classList.toggle("dark-theme");
+        theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
+      }
+      document.body.classList.add("manual-theme");
+      localStorage.setItem("theme", theme);
+    };
+    toggleDarkModeButton.addEventListener("click", toggleDarkModeButtonClickListener);
+    toggleDarkModeButton.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        toggleDarkModeButtonClickListener();
+      }
+    });
   
     // listen to resetDarkModeButton
     resetDarkModeButton.addEventListener("click", function () {
@@ -89,8 +92,15 @@
         localStorage.setItem(logoIdKey, "2");
       }
     };
-    logo1.addEventListener("click", logoOnClickListener);
-    logo2.addEventListener("click", logoOnClickListener);
+    [logo1, logo2].forEach(function (logo) {
+      logo.addEventListener("click", logoOnClickListener);
+      logo.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          logoOnClickListener();
+        }
+      })
+    });
   }
 
   function initializeBiographyReadMore() {
@@ -153,10 +163,33 @@
     // listen to switch language link
     var switchLanguageLink = document.getElementById("link-switch-language");
     var htmlLanguage = document.documentElement.lang;
-    switchLanguageLink.addEventListener("click", function() {
+    var htmlLanguageClickListener = function() {
       switchLanguageLink.innerHTML += "&#8987;";  // add hourglass loading icon
       switchLanguageAndRedirect(htmlLanguage, getOpposingTargetLanguageFromHtmlLanguage(htmlLanguage));
-    });
+    };
+    switchLanguageLink.addEventListener("click", htmlLanguageClickListener);
+    switchLanguageLink.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        htmlLanguageClickListener();
+      }
+    })
+  }
+
+  function initializeAccessibilityMode() {
+    // listen to toggle-accessibility-mode button
+    var toggleAccessibilityModeButton = document.getElementById("toggle-accessibility-mode");
+    var accessibilityModeClass = "accessibility-mode";
+    var checkSign = " &check;";
+    toggleAccessibilityModeButton.addEventListener("click", function() {
+      document.body.classList.toggle(accessibilityModeClass);
+      if (document.body.classList.contains(accessibilityModeClass)) {
+        toggleAccessibilityModeButton.innerHTML += checkSign;
+      } else {
+        toggleAccessibilityModeButton.innerHTML =
+          toggleAccessibilityModeButton.innerHTML.substring(0, toggleAccessibilityModeButton.innerHTML.length - 2);
+      }
+    })
   }
 
   function upgradeLocalStorageDataVersion() {
@@ -191,5 +224,6 @@
   initializeHeaderLogo();
   initializeBiographyReadMore();
   initializeLanguages();
+  initializeAccessibilityMode();
 
 })();
