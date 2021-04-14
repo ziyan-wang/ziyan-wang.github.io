@@ -54,8 +54,10 @@
   </div>
   <header>
     <h1>王子彦</h1>
-    <p><img src="images/logo_large.jpg" srcset="images/logo_small.jpg 220w, images/logo_medium.jpg 440w,
-          images/logo_large.jpg 660w" sizes="220px" width="220" height="165" alt="Photo of Ziyan"/></p>
+    <p id="header-logo" class="header-logo" title="切换为另一张照片">
+      <img id="logo1" src="images/logo_large.jpg" srcset="images/logo_small.jpg 220w, images/logo_medium.jpg 440w, images/logo_large.jpg 660w" sizes="220px" width="220" height="165" loading="lazy" alt="子彦的照片"/>
+      <img id="logo2" src="images/logo_formal_large.jpg" srcset="images/logo_formal_small.jpg 220w, images/logo_formal_medium.jpg 440w, images/logo_formal_large.jpg 660w" sizes="220px" width="220" height="165" class="display-none" loading="lazy" alt="子彦的正式照片"/>
+    </p>
     <blockquote>
       你需要的是抽象。
     </blockquote>
@@ -164,14 +166,14 @@
     <h1>开源项目</h1>
     <p>
       <a href="projects/captcha.html?projectId=1" class="unimportant-link">
-        <img src="images/project_1.svg" width="200" height="91" loading="lazy" alt="Project 1" class="transparent-dark-image"/>
+        <img src="images/project_1.svg" width="200" height="91" loading="lazy" alt="项目1" class="transparent-dark-image"/>
       </a>
       <br>
       （GitHub 100+星，每月下载量约3万次，被微软采用）
     </p>
     <p>
       <a href="projects/captcha.html?projectId=2" class="unimportant-link">
-        <img src="images/project_2.svg" width="200" height="91" loading="lazy" alt="Project 2" class="transparent-dark-image"/>
+        <img src="images/project_2.svg" width="200" height="91" loading="lazy" alt="项目2" class="transparent-dark-image"/>
       </a>
     </p>
 
@@ -200,8 +202,7 @@
     <h1>论文</h1>
     <p>（待添加）</p>
 
-    <p><img src="images/footer_illustration.svg" width="310" height="246" loading="lazy"
-            alt="Simple illustration to beautify the webpage"/></p>
+    <p><img src="images/footer_illustration.svg" width="310" height="246" loading="lazy" alt="用于美化网页的插图"/></p>
 
   </section>
   <footer>

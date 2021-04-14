@@ -6,6 +6,11 @@
   display: none;
 }
 
+/* header logo */
+.header-logo {
+  cursor: pointer;
+}
+
 /* link postfix */
 a:not(.unimportant-link)::after {
   content: " \2197";
