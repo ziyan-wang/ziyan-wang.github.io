@@ -80,8 +80,7 @@
     }
 
     // listen to click event on header logo
-    var headerLogoParagraph = document.getElementById("header-logo");
-    headerLogoParagraph.addEventListener("click", function() {
+    var logoOnClickListener = function() {
       logo1.classList.toggle(displayNoneClass);
       logo2.classList.toggle(displayNoneClass);
       if (!logo1.classList.contains(displayNoneClass)) { // showing logo 1
@@ -89,7 +88,9 @@
       } else if (!logo2.classList.contains(displayNoneClass)) { // showing logo 2
         localStorage.setItem(logoIdKey, "2");
       }
-    })
+    };
+    logo1.addEventListener("click", logoOnClickListener);
+    logo2.addEventListener("click", logoOnClickListener);
   }
 
   function initializeBiographyReadMore() {
