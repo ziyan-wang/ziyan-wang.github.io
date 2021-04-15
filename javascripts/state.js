@@ -70,9 +70,11 @@
   }
 
   function initializeHeaderLogo() {
-    var logoIdKey = "logoId";
     var logo1 = document.getElementById("logo1");
     var logo2 = document.getElementById("logo2");
+    var logoSwitchHint = document.getElementById("logo-switch-hint");
+    var logoIdKey = "logoId";
+    var hideLogoSwitchHintKey = "hideLogoSwitchHint";
     var displayNoneClass = "display-none";
 
     // decide which logo to use by localStorage
@@ -80,6 +82,12 @@
     if (logoIdState === "2") {
       logo1.classList.add(displayNoneClass);
       logo2.classList.remove(displayNoneClass);
+    }
+
+    // decide whether to hide logo switch hint by localStorage
+    var hideLogoSwitchHintState = localStorage.getItem(hideLogoSwitchHintKey);
+    if (hideLogoSwitchHintState === "true") {
+      logoSwitchHint.classList.add(displayNoneClass);
     }
 
     // listen to click event on header logo
@@ -91,15 +99,18 @@
       } else if (!logo2.classList.contains(displayNoneClass)) { // showing logo 2
         localStorage.setItem(logoIdKey, "2");
       }
+      logoSwitchHint.classList.add(displayNoneClass); // hide logo switch hint
+      if (localStorage.getItem(hideLogoSwitchHintKey) !== "true") {
+        localStorage.setItem(hideLogoSwitchHintKey, "true");
+      }
     };
-    [logo1, logo2].forEach(function (logo) {
-      logo.addEventListener("click", logoOnClickListener);
-      logo.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-          event.preventDefault();
-          logoOnClickListener();
-        }
-      })
+    var logoWrapper = document.getElementById("logo-wrapper");
+    logoWrapper.addEventListener("click", logoOnClickListener);
+    logoWrapper.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        logoOnClickListener();
+      }
     });
   }
 
@@ -215,24 +226,27 @@
     // v3: dataVersion["3"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"]
     // v4: dataVersion["4"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"]
     // v5: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"]
+    // v6: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"], hideLogoSwitchHint["false", "true"]
 
     // note: Before v3, version flags (v1 and v2) are not recorded in localStorage
+    // breaking changes: v2 -> v3
 
+    var currentDataVersion = "6";
     var versionState = localStorage.getItem("dataVersion");
     if (versionState === null) {
       // set version flag during the first page load
-      localStorage.setItem("dataVersion", "5");
+      localStorage.setItem("dataVersion", currentDataVersion);
 
-      // upgrade from v2 to v5
+      // upgrade from v2 to v3
       // unsupported legacy Esperanto language, reset to English
       if (localStorage.getItem("language") === "esperanto") {
         console.log("Local data upgraded: supports for Esperanto have been removed, resetting language");
         localStorage.removeItem("language");
       }
-    } else if (versionState === "3" || versionState === "4") {
+    } else if (versionState === "3" || versionState === "4" || versionState === "5") {
       // set version flag during the first page load
-      // upgrade from v3/v4 to v5, no action is needed
-      localStorage.setItem("dataVersion", "5");
+      // upgrade from v3/v4/v5 to v6, no action is needed
+      localStorage.setItem("dataVersion", currentDataVersion);
     }
   }
 

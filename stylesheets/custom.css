@@ -299,6 +299,25 @@ a:hover, a:focus, button.link:hover, button.link:focus {
   color: var(--link-hover-color);
 }
 
+.weak-text {
+  color: var(--weak-text-color);
+}
+
+body:not(.accessibility-mode) .dancing {
+  display: inline-block;
+  padding-left: 2px; /* prevent overflow on Chrome */
+  -webkit-animation: dancing-action 1s infinite alternate;
+  animation: dancing-action 1s infinite alternate;
+}
+@-webkit-keyframes dancing-action {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+@keyframes dancing-action {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
 /* reference list table */
 table.reference-list-table {
   font-size: small;
