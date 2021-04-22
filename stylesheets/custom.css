@@ -374,7 +374,7 @@ body.manual-theme .link-reset-dark-mode {
 
 /* Read more for biography */
 .text-fade-out {
-  max-height: 125px;
+  max-height: 170px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
