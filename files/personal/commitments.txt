@@ -6,8 +6,8 @@ I am:
     in programming languages (static analysis and compilers)
   - both a "hacker" with solid engineering backgrounds and a
     "thinker" who comes with new ideas and insights
-  - a person who spends his life seeking the ultimate truths
-    and the consummate skills, rather than money or fame
+  - a person who seeks the ultimate truths and the consummate
+    skills, rather than money or fame
 
 I hope you:
   - are serious about your researches and produce original works
