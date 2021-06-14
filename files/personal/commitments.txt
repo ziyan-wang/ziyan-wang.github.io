@@ -3,7 +3,7 @@
 
 I am:
   - a self-motivated student with a strong interest and talent
-    in programming languages (static analysis and compilers)
+    in programming languages and static analysis
   - both a "hacker" with solid engineering backgrounds and a
     "thinker" who comes with new ideas and insights
   - a person who seeks the ultimate truths and the consummate
