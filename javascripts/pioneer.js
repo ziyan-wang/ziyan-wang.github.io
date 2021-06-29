@@ -1,6 +1,14 @@
 "use strict";
 (function () {
 
+  function rejectUnsupportedBrowsers() {
+    // does not support IE
+    if (window.navigator.userAgent.match(/(MSIE|Trident)/) !== null) {
+      window.stop();
+      window.location.replace('unsupported.html');
+    }
+  }
+
   // switch language (redirect) at page load according to localStorage
   // should be executed before the user sees the page content to avoid "blink"
   function switchLanguage() {
@@ -17,6 +25,7 @@
     }
   }
 
+  rejectUnsupportedBrowsers();
   switchLanguage();
 
 })();

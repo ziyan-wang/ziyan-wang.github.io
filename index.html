@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en translate=no>
 <head>
-<script>"use strict";!function(){var n=localStorage.getItem("language");if(null!==n){var e=document.documentElement.lang;"english"===n&&"en"!==e?(window.stop(),window.location.replace("index.html")):"chinese"===n&&"zh"!==e&&(window.stop(),window.location.replace("index_cn.html"))}}()</script>
+<script>"use strict";null!==window.navigator.userAgent.match(/(MSIE|Trident)/)&&(window.stop(),window.location.replace("unsupported.html")),function(){var n=localStorage.getItem("language");if(null!==n){var e=document.documentElement.lang;"english"===n&&"en"!==e?(window.stop(),window.location.replace("index.html")):"chinese"===n&&"zh"!==e&&(window.stop(),window.location.replace("index_cn.html"))}}()</script>
 <meta charset=UTF-8>
 <meta http-equiv=X-UA-Compatible content="chrome=1, IE=EmulateIE9">
 <title>Ziyan Wang | Sun Yat-Sen University</title>
@@ -20,16 +20,8 @@
 <meta name=msapplication-TileColor content=#ffb700>
 <meta name=msapplication-config content=icons/browserconfig.xml>
 <meta name=theme-color content=#ffb700>
-<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 </head>
 <body>
-<!--[if IE]>
-    <p>Sorry, Internet Explorer is outdated and no longer supported.</p>
-    <p>Please use <a href="https://www.microsoft.com/edge/">Edge</a>, <a href="https://www.google.com/chrome/">Chrome</a>, <a href="https://www.mozilla.org/firefox/">Firefox</a> or <a href="https://www.apple.com/safari/">Safari</a> instead.</p>
-    <![endif]-->
-<![if !IE]>
 <div class=wrapper>
 <div class="settings noprint">
 <a lang=zh id=link-switch-language title="Switch to Chinese version" class="link-switch-language unimportant-link" tabindex=0>
@@ -236,6 +228,5 @@ Hosted on GitHub Pages · Theme by
 </footer>
 </div>
 <script>var i,metas=document.getElementsByTagName("meta");if(navigator.userAgent.match(/iPhone/i)){for(i=0;i<metas.length;i++)"viewport"==metas[i].name&&(metas[i].content="width=device-width, minimum-scale=1.0, maximum-scale=1.0");document.addEventListener("gesturestart",gestureStart,!1)}function gestureStart(){for(i=0;i<metas.length;i++)"viewport"==metas[i].name&&(metas[i].content="width=device-width, minimum-scale=0.25, maximum-scale=1.6")}!function(){function a(e,t){if(!e)throw new Error(t)}function c(e){return"en"===e||"zh"===e}var e,t,o,n,l,i,s;function d(e){!0===e?(document.body.classList.add(o),t.innerHTML+=l):(document.body.classList.toggle(o),document.body.classList.contains(o)?(t.innerHTML+=l,localStorage.setItem(n,"true")):(t.innerHTML=t.innerHTML.substring(0,t.innerHTML.length-2),localStorage.removeItem(n)))}function r(){var e,t,o,n;i.innerHTML+="&#8987;",a(c(n=e=s),"Unrecognized htmlLanguage: "+n),t="en"===n?"chinese":"english",a(c(e),"Unrecognized htmlLanguage: "+e),a("english"===(o=t)||"chinese"===o,"Unrecognized targetLanguage: "+t),"english"===t&&"en"!==e?(localStorage.setItem("language","english"),window.location.replace("index.html")):"chinese"===t&&"zh"!==e&&(localStorage.setItem("language","chinese"),window.location.replace("index_cn.html"))}null===(e=localStorage.getItem("dataVersion"))?(localStorage.setItem("dataVersion","6"),"esperanto"===localStorage.getItem("language")&&(console.log("Local data upgraded: supports for Esperanto have been removed, resetting language"),localStorage.removeItem("language"))):"3"!==e&&"4"!==e&&"5"!==e||localStorage.setItem("dataVersion","6"),function(){var e=document.querySelector(".link-reset-dark-mode"),t=window.matchMedia("(prefers-color-scheme: dark)"),o=localStorage.getItem("theme");function n(){var e;e=t.matches?(document.body.classList.toggle("light-theme"),document.body.classList.contains("light-theme")?"light":"dark"):(document.body.classList.toggle("dark-theme"),document.body.classList.contains("dark-theme")?"dark":"light"),document.body.classList.add("manual-theme"),localStorage.setItem("theme",e)}o&&document.body.classList.add("manual-theme"),t.matches?"light"===o&&document.body.classList.toggle("light-theme"):"dark"===o&&document.body.classList.toggle("dark-theme");var a=document.getElementById("btn-toggle-dark-mode");a.addEventListener("click",n),a.addEventListener("keyup",function(e){13===e.keyCode&&(e.preventDefault(),n())}),e.addEventListener("click",function(){localStorage.removeItem("theme"),document.body.classList.remove("light-theme"),document.body.classList.remove("dark-theme"),document.body.classList.remove("manual-theme")})}(),function(){var e=document.getElementById("logo1"),t=document.getElementById("logo2"),o=document.getElementById("logo-switch-hint"),n="logoId",a="hideLogoSwitchHint",l="display-none";function i(){e.classList.toggle(l),t.classList.toggle(l),e.classList.contains(l)?t.classList.contains(l)||localStorage.setItem(n,"2"):localStorage.removeItem(n),o.classList.add(l),"true"!==localStorage.getItem(a)&&localStorage.setItem(a,"true")}"2"===localStorage.getItem(n)&&(e.classList.add(l),t.classList.remove(l)),"true"===localStorage.getItem(a)&&o.classList.add(l);var c=document.getElementById("logo-wrapper");c.addEventListener("click",i),c.addEventListener("keyup",function(e){13===e.keyCode&&(e.preventDefault(),i())})}(),function(){var e=document.querySelector(".btn-read-more-biography"),t=document.querySelector(".biography"),o=document.documentElement.lang;c(o)||(console.error("Unsupported html.lang, defaulting to English"),o="en");var n={en:"Read more &#9660;",zh:"全文 &#9660;"},a={en:"Read less &#9650;",zh:"收起 &#9650;"},l=localStorage.getItem("biographyFold"),i=null===l?"folded":l;"unfolded"===i&&(t.classList.remove("text-fade-out"),e.innerHTML=a[o]),e.addEventListener("click",function(){if(t.classList.toggle("text-fade-out"),"folded"===i)e.innerHTML=a[o],i="unfolded",localStorage.setItem("biographyFold",i);else{if("unfolded"!==i)throw new Error("Unexpected foldState: "+i.toString());e.innerHTML=n[o],i="folded",localStorage.removeItem("biographyFold")}})}(),t=document.getElementById("toggle-accessibility-mode"),o="accessibility-mode",n="accessibilityMode",l=" &check;",t.addEventListener("click",function(){d(!1)}),"true"===localStorage.getItem(n)&&d(!0),i=document.getElementById("link-switch-language"),s=document.documentElement.lang,i.addEventListener("click",r),i.addEventListener("keyup",function(e){13===e.keyCode&&(e.preventDefault(),r())})}()</script>
-<![endif]>
 </body>
 </html>
