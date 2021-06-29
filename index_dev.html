@@ -33,6 +33,11 @@
     <![endif]-->
   </head>
   <body>
+    <!--[if IE]>
+      <p>Sorry, Internet Explorer is outdated and no longer supported.<p>
+      <p>Please use <a href="https://www.microsoft.com/edge/">Edge</a>, <a href="https://www.google.com/chrome/">Chrome</a>, <a href="https://www.mozilla.org/firefox/">Firefox</a> or <a href="https://www.apple.com/safari/">Safari</a> instead.</p>
+    <![endif]-->
+    <![if !IE]>
     <div class="wrapper">
       <div class="settings noprint">
         <a lang="zh" id="link-switch-language" title="Switch to Chinese version"
@@ -259,5 +264,6 @@
     </div>
     <script src="javascripts/scale.fix.js"></script>
     <script src="javascripts/state.js"></script>
+    <![endif]>
   </body>
 </html>
