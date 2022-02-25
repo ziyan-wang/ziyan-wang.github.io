@@ -150,6 +150,7 @@ body {
   --link-hover-color: #00476b;
   --table-border-color: #e5e5e5;
   --bkg-color: #fff;
+  --accent-bkg-color: #fdb;
 }
 body.dark-theme {
   --text-color: #eee;
@@ -158,6 +159,7 @@ body.dark-theme {
   --link-hover-color: #3fc0ff;
   --table-border-color: #727272;
   --bkg-color: #121212;
+  --accent-bkg-color: #664600;
 }
 body.accessibility-mode {
   --text-color: #000000;
@@ -166,6 +168,7 @@ body.accessibility-mode {
   --link-hover-color: #0000ee;
   --table-border-color: #000000;
   --bkg-color: #ffffff;
+  --accent-bkg-color: #fff0e0;
 }
 body.dark-theme.accessibility-mode {
   --text-color: #ffffff;
@@ -174,6 +177,7 @@ body.dark-theme.accessibility-mode {
   --link-hover-color: #00ffff;
   --table-border-color: #ffffff;
   --bkg-color: #000000;
+  --accent-bkg-color: #332300;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -185,6 +189,7 @@ body.dark-theme.accessibility-mode {
     --link-hover-color: #3fc0ff;
     --table-border-color: #727272;
     --bkg-color: #121212;
+    --accent-bkg-color: #664600;
   }
   body.light-theme {
     --text-color: #222;
@@ -193,6 +198,7 @@ body.dark-theme.accessibility-mode {
     --link-hover-color: #00476b;
     --table-border-color: #e5e5e5;
     --bkg-color: #fff;
+    --accent-bkg-color: #fdb;
   }
   body.accessibility-mode {
     --text-color: #ffffff;
@@ -201,6 +207,7 @@ body.dark-theme.accessibility-mode {
     --link-hover-color: #00ffff;
     --table-border-color: #ffffff;
     --bkg-color: #000000;
+    --accent-bkg-color: #332300;
   }
   body.light-theme.accessibility-mode {
     --text-color: #000000;
@@ -209,6 +216,7 @@ body.dark-theme.accessibility-mode {
     --link-hover-color: #0000ee;
     --table-border-color: #000000;
     --bkg-color: #ffffff;
+    --accent-bkg-color: #fff0e0;
   }
 }
 
@@ -283,7 +291,7 @@ body {
   background: var(--bkg-color);
 }
 
-h1, p, li, strong, code {
+h1, p, li, strong, code, details {
   color: var(--text-color);
 }
 
@@ -429,6 +437,36 @@ body.accessibility-mode button.link{
 
 body.accessibility-mode a.phantom-link {
   border-bottom: 1px var(--link-color) solid;
+}
+
+/* highlight details and summary tag */
+details > summary {
+  background-color: var(--accent-bkg-color);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+details > summary > * {
+  display: inline;
+}
+
+details > div {
+  border: 2px solid var(--accent-bkg-color);
+  margin-top: 0;
+  padding: 0.5rem;
+}
+
+details > div > ul {
+  margin-bottom: 0;
+  padding-inline-start: 30px;
+}
+
+.extra-padding-start {
+  padding-inline-start: 30px;
+}
+
+.small {
+  font-size: small;
 }
 
 /*

@@ -219,6 +219,35 @@
     }
   }
 
+  function handleDetailTagsWhenPrint() {
+    var printHandler = (function () {
+      var details = document.getElementsByTagName("details");
+      var detailsOriginallyOpened = [];
+      var forceOpenDetail = function() {
+        if (detailsOriginallyOpened.length > 0) {
+          detailsOriginallyOpened = [];
+        }
+        for (var i = 0; i < details.length; i += 1) {
+          detailsOriginallyOpened.push(details[i].open);
+          details[i].open = true;
+        }
+      };
+
+      var restoreDetailOpenState = function() {
+        for (var i = 0; i < detailsOriginallyOpened.length; i += 1) {
+          if (!detailsOriginallyOpened[i]) {
+            details[i].open = false;
+          }
+        }
+        detailsOriginallyOpened = [];
+      };
+      return {before: forceOpenDetail, after: restoreDetailOpenState};
+    })();
+
+    window.onbeforeprint = printHandler.before;
+    window.onafterprint = printHandler.after;
+  }
+
   function upgradeLocalStorageDataVersion() {
     // data versions for localStorage data
     // v1: theme["dark", "light"], biographyFold["unfolded", "folded"]
@@ -256,5 +285,6 @@
   initializeBiographyReadMore();
   initializeAccessibilityMode();
   initializeLanguages();
+  handleDetailTagsWhenPrint();
 
 })();
