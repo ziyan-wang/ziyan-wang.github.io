@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <script src="../javascripts/links_confirm_pioneer.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>可能无法打开</title>
+  <link rel="stylesheet" href="../stylesheets/styles.css">
+  <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+  <link rel="stylesheet" href="../stylesheets/custom.css">
+  <link rel="stylesheet" href="../stylesheets/action_page.css">
+</head>
+<body>
+<div class="container">
+  <h1>可能无法打开</h1>
+  <p>
+    您正在前往<span id="link-site-name">未知网站</span>，该网站在您的国家/地区可能无法打开。是否继续？
+  </p>
+  <p id="url-wrapper"><small id="url" class="url-plain"></small></p>
+  <p>
+    <button class="link" onclick="goBack()">返回</button><br>
+    <button class="link" onclick="goForward()">继续访问</button><br>
+    <button class="link" onclick="goForwardForce()">继续访问且不再提示</button><br>
+  </p>
+</div>
+<script src="../javascripts/links_confirm.js"></script>
+</body>
+</html>

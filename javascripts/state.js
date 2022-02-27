@@ -256,11 +256,12 @@
     // v4: dataVersion["4"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"]
     // v5: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"]
     // v6: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"], hideLogoSwitchHint["false", "true"]
+    // v7: dataVersion["5"], theme["dark", "light"], biographyFold["unfolded", "folded"], language["english", "chinese"], logoId["1", "2"], accessibilityMode["false", "true"], hideLogoSwitchHint["false", "true"], noConfirmForUnavailableLinks["true"]
 
     // note: Before v3, version flags (v1 and v2) are not recorded in localStorage
     // breaking changes: v2 -> v3
 
-    var currentDataVersion = "6";
+    var currentDataVersion = "7";
     var versionState = localStorage.getItem("dataVersion");
     if (versionState === null) {
       // set version flag during the first page load
@@ -272,9 +273,9 @@
         console.log("Local data upgraded: supports for Esperanto have been removed, resetting language");
         localStorage.removeItem("language");
       }
-    } else if (versionState === "3" || versionState === "4" || versionState === "5") {
+    } else if (versionState === "3" || versionState === "4" || versionState === "5" || versionState === "6") {
       // set version flag during the first page load
-      // upgrade from v3/v4/v5 to v6, no action is needed
+      // upgrade from v3/v4/v5/v6 to v7, no action is needed
       localStorage.setItem("dataVersion", currentDataVersion);
     }
   }
