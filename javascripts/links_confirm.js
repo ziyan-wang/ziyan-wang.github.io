@@ -62,7 +62,8 @@
   }
 
   function goBack() {
-    window.close();
+    window.close(); // for PC and mobile browsers
+    window.history.back(); // for mobile apps which disallow window.close()
   }
 
   function goForward() {
