@@ -5,11 +5,28 @@
   var postAlphabetMap = {43: 95, 47: 45, 61: 36};
   var reversePostAlphabetMap = {95: 43, 45: 47, 36: 61};
 
-  var projectUrls = [
-    'Za4G5a0neq7sZo49cR2AJg7TegUfpLDNxRDAcL7leIMlc8BfpuOTkROfZoFBc86fpd11',
-    'Za4G5a0neq7EpgU6pLcFpL_Akg6GZaDueL6fe-11',
-    'Za4G5a0neq7sZo49cR2AJg7TeOMqZokBc8D3p-11',
-  ];
+  var targetUrlInfo = [{
+      url: 'Za4G5a0neq7sZo49cR2AJg7TegUfpLDNxRDAcL7leIMlc8BfpuOTkROfZoFBc86fpd11',
+      siteName: 'GitHub',
+    }, {
+      url: 'Za4G5a0neq7EpgU6pLcFpL_Akg6GZaDueL6fe-11',
+      siteName: 'GitHub',
+    }, {
+      url: 'Za4G5a0neq7sZo49cR2AJg7TeOMqZokBc8D3p-11',
+      siteName: 'GitHub',
+  }];
+
+  function getUrlIdFromQueryString() {
+    var matches = /urlId=([^&]+)/.exec(window.location.search);
+    if (matches === null || matches.length !== 2) {
+      throw new Error('Illegal query string');
+    }
+    var urlId = parseInt(matches[1]);
+    if (isNaN(urlId) || urlId <= 0 || urlId > targetUrlInfo.length) {
+      throw new Error('Illegal urlId');
+    }
+    return urlId - 1;
+  }
 
   function encrypt(string) {
     if (typeof string !== 'string' || string.length === 0) {
@@ -71,18 +88,11 @@
         var rightOperand = parseInt(problem.rightOperand);
         var correctAnswer = problem.operator === 'plus' ? leftOperand + rightOperand : leftOperand - rightOperand;
         if (input === correctAnswer.toString()) {
-          var matches = /projectId=([^&]+)/.exec(window.location.search);
-          if (matches === null || matches.length !== 2) {
-            throw new Error('Illegal query string');
-          }
-          var projectId = parseInt(matches[1]);
-          if (isNaN(projectId)) {
-            throw new Error('Illegal projectId');
-          }
+          var urlId = getUrlIdFromQueryString();
           document.getElementById('captchaWrapper').style.display = 'none';
           document.getElementById('wrongInputSign').style.display = 'none';
           document.getElementById('rightInputSign').style.display = 'inline-block';
-          var targetUrl = decrypt(projectUrls[projectId - 1]);
+          var targetUrl = decrypt(targetUrlInfo[urlId]['url']);
           window.location.replace(targetUrl);
           return true;
         } else {
@@ -132,6 +142,16 @@
     });
   }
 
+  function initSiteNames() {
+    var urlId = getUrlIdFromQueryString();
+    var siteName = targetUrlInfo[urlId]['siteName'];
+    var nameTags = document.getElementsByClassName("link-site-name");
+    for (var i = 0; i < nameTags.length; i++) {
+      nameTags[i].innerHTML = siteName;
+    }
+  }
+
+  initSiteNames();
   addEnterKeyListenerOnCaptchaInput();
   applyCaptchaProblem();
   window.validateCaptchaAnswer = validateCaptchaAnswer;

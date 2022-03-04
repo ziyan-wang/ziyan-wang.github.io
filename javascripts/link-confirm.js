@@ -18,12 +18,12 @@
       "en.wikipedia.org": "维基百科",
       "scholar.google.com": "谷歌学术",
       "github.com": "GitHub",
-      "projects/captcha.html": "GitHub",
+      "@/.+/link-captcha": "GitHub",
     };
 
     function getSiteNameFromUrl(url) {
       for (var key in siteNameMap) {
-        if (url.indexOf(key) !== -1) {
+        if (new RegExp(key).test(url)) {
           return siteNameMap[key];
         }
       }
@@ -67,7 +67,8 @@
   }
 
   function goForward() {
-    window.location.replace(getArgumentFromQueryString("url"));
+    var url = getArgumentFromQueryString("url");
+    window.location.replace(url.replace("@", window.location.origin));
   }
 
   function goForwardForce() {

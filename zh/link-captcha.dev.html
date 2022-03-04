@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>验证码</title>
+  <link rel="stylesheet" href="../stylesheets/captcha.css">
+</head>
+<body>
+<div class="container">
+  <div>
+    在前往<span class="link-site-name">目标网站</span>之前，我们需要验证您是人类，而不是机器人。
+  </div>
+  <div id="notARobotCheckboxWrapper">
+    <button id="notARobotCheckbox" onclick="onNotARobotCheckboxClick()">我不是机器人</button>
+  </div>
+  <div id="captchaWrapper">
+    <div id="captcha"></div>
+    <input id="captchaInput" type="number" />
+    <button id="submitButton" onclick="validateCaptchaAnswer()">提交</button>
+  </div>
+  <span id="wrongInputSign">验证码不正确，请您重试</span>
+  <span id="rightInputSign">正在跳转到<span class="link-site-name">目标网站</span>...</span>
+</div>
+<script src="../javascripts/captcha.js"></script>
+</body>
+</html>

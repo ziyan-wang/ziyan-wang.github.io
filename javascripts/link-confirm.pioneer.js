@@ -5,6 +5,7 @@
     if (urlMatches === null || urlMatches.length !== 2) {
       throw new Error('Illegal query string');
     }
+    window.stop();
     window.location.replace(urlMatches[1]);
   }
 })();

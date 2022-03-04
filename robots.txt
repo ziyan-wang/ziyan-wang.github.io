@@ -1,5 +1,6 @@
 User-agent: *
-Disallow: /projects/
-Disallow: /captcha.html
 Disallow: /files/personal/
-Disallow: /links/
+Disallow: /en/link-captcha.html
+Disallow: /en/link-confirm.html
+Disallow: /zh/link-captcha.html
+Disallow: /zh/link-confirm.html
