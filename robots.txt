@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /files/personal/
+Disallow: /en/dependence-minimization-lifestyle.html
 Disallow: /en/link-captcha.html
+Disallow: /zh/dependence-minimization-lifestyle.html
 Disallow: /zh/link-captcha.html
 Disallow: /zh/link-confirm.html
