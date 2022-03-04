@@ -164,10 +164,10 @@
       assert(isValidTargetLanguage(targetLanguage), "Unrecognized targetLanguage: " + targetLanguage);
       if (targetLanguage === "english" && htmlLanguage !== "en") {
         localStorage.setItem("language", "english");
-        window.location.replace("/en/index.html");
+        window.location.replace("../en/index.html");
       } else if (targetLanguage === "chinese" && htmlLanguage !== "zh") {
         localStorage.setItem("language", "chinese");
-        window.location.replace("/zh/index.html");
+        window.location.replace("../zh/index.html");
       }
     }
 

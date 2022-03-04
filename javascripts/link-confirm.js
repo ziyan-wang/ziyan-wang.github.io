@@ -18,7 +18,7 @@
       "en.wikipedia.org": "维基百科",
       "scholar.google.com": "谷歌学术",
       "github.com": "GitHub",
-      "@/.+/link-captcha": "GitHub",
+      "^link-captcha.html": "GitHub",
     };
 
     function getSiteNameFromUrl(url) {
@@ -67,8 +67,7 @@
   }
 
   function goForward() {
-    var url = getArgumentFromQueryString("url");
-    window.location.replace(url.replace("@", window.location.origin));
+    window.location.replace(getArgumentFromQueryString("url"));
   }
 
   function goForwardForce() {
