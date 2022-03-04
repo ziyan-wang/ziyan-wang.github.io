@@ -24,14 +24,14 @@
   <meta name="theme-color" content="#ffb700">
 
   <!-- always redirect, even when js is disabled -->
-  <noscript><meta http-equiv="refresh" content="0; url=en/index.html" /></noscript>
+  <noscript><meta http-equiv="refresh" content="0; url=en/" /></noscript>
   <script>
     // switch language (redirect) at page load according to browser language settings
     var language = navigator.language;
     if (language.startsWith("zh")) {
-      window.location.replace('zh/index.html');
+      window.location.replace('zh/');
     } else {  // default to English
-      window.location.replace('en/index.html');
+      window.location.replace('en/');
     }
   </script>
 </head>
