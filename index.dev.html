@@ -29,9 +29,9 @@
     // switch language (redirect) at page load according to browser language settings
     var language = navigator.language;
     if (language.startsWith("zh")) {
-      window.location.replace('zh/');
+      window.location.replace('zh/' + window.location.hash);
     } else {  // default to English
-      window.location.replace('en/');
+      window.location.replace('en/' + window.location.hash);
     }
   </script>
 </head>
