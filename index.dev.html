@@ -3,6 +3,20 @@
 <head>
   <!-- pioneer script -->
   <script src="javascripts/reject-ie.js"></script>
+  <script>
+    // switch language (redirect) at page load according to browser language settings
+    var language = navigator.language;
+    var languagePrefix;
+    if (language.startsWith("zh")) {
+      languagePrefix = 'zh/';
+    } else {  // default to English
+      languagePrefix = 'en/';
+    }
+    window.stop(); // prevent title blinking
+    window.location.replace(languagePrefix + window.location.hash);
+  </script>
+  <!-- always redirect, even when js is disabled -->
+  <noscript><meta http-equiv="refresh" content="0; url=en/" /></noscript>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -22,18 +36,6 @@
   <meta name="msapplication-TileColor" content="#ffb700">
   <meta name="msapplication-config" content="icons/browserconfig.xml">
   <meta name="theme-color" content="#ffb700">
-
-  <!-- always redirect, even when js is disabled -->
-  <noscript><meta http-equiv="refresh" content="0; url=en/" /></noscript>
-  <script>
-    // switch language (redirect) at page load according to browser language settings
-    var language = navigator.language;
-    if (language.startsWith("zh")) {
-      window.location.replace('zh/' + window.location.hash);
-    } else {  // default to English
-      window.location.replace('en/' + window.location.hash);
-    }
-  </script>
 </head>
 <body>
 </body>
