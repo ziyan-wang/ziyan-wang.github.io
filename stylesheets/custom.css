@@ -469,6 +469,14 @@ details > div > ul {
   font-size: small;
 }
 
+.light-theme-only {
+  display: inline;
+}
+
+.dark-theme-only {
+  display: none;
+}
+
 /*
 <body>'s classes          |  prefers-color-scheme:screen-showing-color:control-mode
 --------------------------|---------------------------------------------------------
@@ -479,6 +487,12 @@ manual-theme dark-theme   |  prefer-light:dark:manual
 */
 
 /* user's prefers-color-scheme: light */
+body.manual-theme.dark-theme .light-theme-only {
+  display: none;
+}
+body.manual-theme.dark-theme .dark-theme-only {
+  display: inline;
+}
 body:not(.accessibility-mode).manual-theme.dark-theme img {
   filter: brightness(0.8) contrast(1.2);
 }
@@ -525,6 +539,12 @@ body.manual-theme.dark-theme .indicator-dark-mode-off {
 
 /* user's prefers-color-scheme: dark */
 @media (prefers-color-scheme: dark) {
+  body:not(.light-theme) .light-theme-only {
+    display: none;
+  }
+  body:not(.light-theme) .dark-theme-only {
+    display: inline;
+  }
   body:not(.accessibility-mode):not(.light-theme) img {
     filter: brightness(0.8) contrast(1.2);
   }
